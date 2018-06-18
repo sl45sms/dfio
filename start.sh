@@ -38,6 +38,7 @@ if [ ! -f "/app/index.js" ]; then
             make
         sudo -u nodejs git clone https://github.com/formio/formio /app
         cd /app
+        sudo -u nodejs npm install node-paginate-anything
         sudo -u nodejs npm install
 
         apt-get purge -y \
