@@ -12,7 +12,8 @@ This Container uses Debian Stretch as a base image along with NodeJS 9.2.0
 # Quick Start
 docker build -t skarvelis/formio-api:1.0 .
 
-docker run -p 3001:3001 -p 8080:8080 --env ADMIN_EMAIL=admin@example.com --env ADMIN_PASS=password skarvelis/formio-api:1.0 
+docker run --name mongo -p 27017:27017 -d mongo:6.0.4
+docker run -p 3001:3001 --env ADMIN_EMAIL=admin@example.com --env ADMIN_PASS=password --network host skarvelis/formio-api:1.0 
 
 Once started, visit your defined hostname or IP Address and port and login using the values provided in the `ADMIN_EMAIL` and 
 `ADMIN_PASS` variables above.
@@ -69,12 +70,11 @@ available options that can be used to customize your installation.
 
 ### Networking
 
-The following ports are exposed.
+The following port are exposed.
 
 | Port      | Description |
 |-----------|-------------|
 | `3001`    | NodeJS API Server |
-| `8080`    | form builder application |
 
 # Maintenance
 #### Shell Access
@@ -88,4 +88,3 @@ docker exec -it (whatever your container name is e.g. formio) bash
 # References
 
 * https://www.form.io/
-
