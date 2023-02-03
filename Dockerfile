@@ -5,7 +5,6 @@ LABEL maintainer="Panagiotis Skarvelis"
     ENV ENABLE_SMTP=FALSE \
         ENABLE_CRON=FALSE 
 
-
 ### Dependencies Addon
     RUN apt-get update && \
         apt-get install -y --no-install-recommends \
@@ -31,8 +30,8 @@ LABEL maintainer="Panagiotis Skarvelis"
 
 ### add depentecies
     RUN curl --silent https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-       echo 'deb https://deb.nodesource.com/node_9.x stretch main' > /etc/apt/sources.list.d/nodesource.list && \
-       echo 'deb-src https://deb.nodesource.com/node_9.x stretch main' >> /etc/apt/sources.list.d/nodesource.list && \
+       echo 'deb https://deb.nodesource.com/node_16.x stretch main' > /etc/apt/sources.list.d/nodesource.list && \
+       echo 'deb-src https://deb.nodesource.com/node_16.x stretch main' >> /etc/apt/sources.list.d/nodesource.list && \
        apt-get update && \
        apt-get install -y \
                nodejs \
