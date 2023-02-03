@@ -98,13 +98,11 @@ cd /app
 spawn /usr/bin/node /app/main.js
 expect "(y/N)"
 send -- "y\n"
-expect "(1)"
-send -- "https://github.com/formio/formio-app-formbuilder\n"
 expect "(client)"
 send -- "\n"
-expect "account"
+expect "account."
 send -- "${ADMIN_EMAIL}\n"
-expect "account"
+expect "account."
 send -- "${ADMIN_PASS}\n"
 expect "Install successful!"
 send -- "\003"
@@ -117,10 +115,6 @@ rm -rf /tmp/install.sh
 ### Change URLs
 sed -i "/var APP_URL = /c\var APP_URL = '$URL_PREFIX$APP_URL';" /app/client/dist/config.js
 sed -i "/var API_URL = /c\var API_URL = '$URL_PREFIX$API_URL';" /app/client/dist/config.js
-# for formbuilder
-sed -i "/var APP_URL = /c\var APP_URL = '$URL_PREFIX$APP_URL';" /app/app/dist/config.js
-sed -i "/var API_URL = /c\var API_URL = '$URL_PREFIX$API_URL';" /app/app/dist/config.js
-
 fi
 
 ### finaly start application
